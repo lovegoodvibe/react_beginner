@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, {Component} from "react";
 import './App.css';
+import View from "./components/view";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: 'Nguyen Van B',
+            age: 18
+        }
+    }
+
+    onchange = () => {
+        const {age} = this.state;
+        this.setState({
+            name: 'le thi c',
+            age: age + 2
+        })
+
+    }
+
+    render() {
+        const {name, age} = this.state;
+        const check = {
+            data: 5
+        }
+        const params = {
+            name: name,
+            age: age
+        }
+        return (
+            <div>
+                <View data={params} check={check}/>
+                <button onClick={this.onchange}>bam vao day</button>
+            </div>
+
+        )
+    }
 }
 
 export default App;
